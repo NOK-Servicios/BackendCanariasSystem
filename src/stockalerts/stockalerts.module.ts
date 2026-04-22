@@ -4,6 +4,6 @@ import { StockalertsController } from './stockalerts.controller';
 
 @Module({
   providers: [StockalertsService],
-  controllers: [StockalertsController]
+  controllers: [StockalertsController],
 })
 export class StockalertsModule {}

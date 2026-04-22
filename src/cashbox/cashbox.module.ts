@@ -4,6 +4,6 @@ import { CashboxService } from './cashbox.service';
 
 @Module({
   controllers: [CashboxController],
-  providers: [CashboxService]
+  providers: [CashboxService],
 })
 export class CashboxModule {}

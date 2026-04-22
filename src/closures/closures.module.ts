@@ -4,6 +4,6 @@ import { ClosuresService } from './closures.service';
 
 @Module({
   controllers: [ClosuresController],
-  providers: [ClosuresService]
+  providers: [ClosuresService],
 })
 export class ClosuresModule {}

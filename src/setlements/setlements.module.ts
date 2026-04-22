@@ -4,6 +4,6 @@ import { SetlementsService } from './setlements.service';
 
 @Module({
   controllers: [SetlementsController],
-  providers: [SetlementsService]
+  providers: [SetlementsService],
 })
 export class SetlementsModule {}
