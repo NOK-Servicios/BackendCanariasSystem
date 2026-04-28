@@ -1,10 +1,19 @@
-import { Controller, Get, Param, ParseUUIDPipe, Post } from '@nestjs/common';
+import {
+  Controller,
+  Delete,
+  Get,
+  Param,
+  ParseUUIDPipe,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { CreateClientDto } from './dto/createClientDto';
 import { ClientsService } from './clients.service';
+import { UpdateClientDto } from './dto/updateClientDto';
 
 @Controller('clients')
 export class ClientsController {
-  constructor(private readonly clientsService: ClientsService) { }
+  constructor(private readonly clientsService: ClientsService) {}
 
   @Get()
   findAll() {
@@ -21,11 +30,16 @@ export class ClientsController {
     return this.clientsService.create(client);
   }
 
-  @Post(':id')
+  @Put(':id')
   update(
     @Param('id', new ParseUUIDPipe()) id: string,
-    client: CreateClientDto,
+    client: UpdateClientDto,
   ) {
     return this.clientsService.update(id, client);
+  }
+
+  @Delete(':id')
+  delete(@Param('id', new ParseUUIDPipe()) id: string) {
+    return this.clientsService.delete(id);
   }
 }

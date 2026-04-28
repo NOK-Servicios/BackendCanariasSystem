@@ -1,20 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { CreateClientDto } from './dto/createClientDto';
 import { UpdateClientDto } from './dto/updateClientDto';
+import { ClientsRepository } from './clients.repository';
 
 @Injectable()
 export class ClientsService {
+  constructor(private readonly clientsRepository: ClientsRepository) {}
   findAll() {
-    return 'This action returns all clients';
+    return this.clientsRepository.findAll();
   }
 
   findOne(id: string) {
-    return `This action returns the client with id: ${id}`;
+    return this.clientsRepository.findOne(id);
   }
   create(client: CreateClientDto) {
-    return `This action adds a new client: ${client.name}`;
+    return this.clientsRepository.create(client);
   }
   update(id: string, client: UpdateClientDto) {
-    return `This action updates the client with id: ${id} and name: ${client.name}`;
+    return this.clientsRepository.update(id, client);
+  }
+  delete(id: string) {
+    return this.clientsRepository.delete(id);
   }
 }

@@ -1,17 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import { UpdateCashboxDto } from './dto/updateCashboxDto';
+import { AddCashboxDto } from './dto/updateCashboxDto';
+import { CashboxRepository } from './cashbox.repository';
 
 @Injectable()
 export class CashboxService {
-  findAll() {
-    return 'This action returns all cashboxes';
+  constructor(private readonly cashboxRepository: CashboxRepository) {}
+  findAllCashbox() {
+    return this.cashboxRepository.findAllCashBox();
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} cashbox`;
+  findOneCashbox(id: string) {
+    return this.cashboxRepository.findOneCashbox(id);
   }
 
-  update(id: string, cashbox: UpdateCashboxDto) {
-    return `This action updates a #${id} cashbox`;
+  addCashbox(cashbox: AddCashboxDto) {
+    return this.cashboxRepository.createCashbox(cashbox);
   }
 }

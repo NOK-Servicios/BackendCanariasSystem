@@ -30,4 +30,10 @@ export class UpdateStaffDto {
   @IsString()
   @IsOptional()
   adress: string | undefined;
+
+  @IsDate()
+  createdAt: Date;
+
+  @IsDate()
+  updatedAt: Date;
 }

@@ -5,7 +5,6 @@ import {
   ParseUUIDPipe,
   Post,
   Put,
-  Delete,
   Body,
 } from '@nestjs/common';
 import { StaffService } from './staff.service';

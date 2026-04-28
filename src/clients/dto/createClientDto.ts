@@ -5,7 +5,17 @@ import {
   MaxLength,
   IsNumber,
   IsDate,
+  IsEnum,
 } from 'class-validator';
+
+export enum ClientStatus {
+  ACTIVE = 'ACTIVE', // Cliente vigente, con operaciones en curso
+  INACTIVE = 'INACTIVE', // Cliente registrado pero sin actividad
+  PENDING = 'PENDING', // Cliente en proceso de alta o validación
+  SUSPENDED = 'SUSPENDED', // Cliente bloqueado temporalmente (ej. por deuda)
+  CLOSED = 'CLOSED', // Cliente dado de baja definitiva
+  DELINQUENT = 'DELINQUENT', // Cliente con deuda vencida
+}
 
 export class CreateClientDto {
   @IsString()
@@ -33,4 +43,10 @@ export class CreateClientDto {
 
   @IsString()
   ServiceImage: string | undefined;
+
+  @IsDate()
+  createdAt: Date;
+
+  @IsEnum(ClientStatus)
+  status: ClientStatus;
 }

@@ -5,7 +5,7 @@ export enum CashboxStatus {
   CLOSED = 'cerrada',
 }
 
-export class UpdateCashboxDto {
+export class AddCashboxDto {
   @IsUUID()
   id: string;
 
@@ -14,11 +14,11 @@ export class UpdateCashboxDto {
 
   @IsNumber()
   @Min(0)
-  opening_balance: number;
+  openingBalance: number;
 
   @IsNumber()
   @Min(0)
-  closing_balance: number;
+  closingBalance: number;
 
   @IsEnum(CashboxStatus)
   status: CashboxStatus;

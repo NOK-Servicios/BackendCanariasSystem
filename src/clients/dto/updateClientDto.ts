@@ -30,4 +30,7 @@ export class UpdateClientDto {
   @IsString()
   @IsOptional()
   adress: string | undefined;
+
+  @IsDate()
+  updatedAt: Date;
 }

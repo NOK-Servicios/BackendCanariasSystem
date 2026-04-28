@@ -18,4 +18,10 @@ export class CreateStaffDto {
 
   @IsString()
   adress: string;
+
+  @IsDate()
+  createdAt: Date;
+
+  @IsDate()
+  updatedAt: Date;
 }
