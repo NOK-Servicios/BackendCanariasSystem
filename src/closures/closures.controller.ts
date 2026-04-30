@@ -7,17 +7,22 @@ export class ClosuresController {
   constructor(private readonly closuresService: ClosuresService) {}
 
   @Post()
-  async createClosure(@Body() closure: createClouseDto) {
-    return await this.closuresService.createClosure(closure);
+  createClosure(@Body() closure: createClouseDto) {
+    return this.closuresService.createClosureService(closure);
   }
 
   @Get()
-  async getClosures() {
-    return await this.closuresService.getClosures();
+  getClosures() {
+    return this.closuresService.getClosuresService();
   }
 
   @Get(':id')
-  async getClosureById(@Param('id') id: string) {
-    return await this.closuresService.getClosureById(id);
+  getClosureById(@Param('id') id: string) {
+    return this.closuresService.getClosureByIdService(id);
+  }
+
+  @Get('staff/:staffId')
+  getClosuresByStaffId(@Param('staffId') staffId: string) {
+    return this.closuresService.getClosuresByStaffIdService(staffId);
   }
 }

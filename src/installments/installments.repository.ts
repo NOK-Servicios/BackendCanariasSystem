@@ -1,3 +1,6 @@
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
 export class InstallmentsRepository {
   getAllInstallments() {
     return 'este metodo devuelve todas las cuotas de todos los clientes';

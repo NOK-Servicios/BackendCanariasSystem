@@ -1,4 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { UpdateProductDto } from './dto/updateProductDto';
+import { CreateProductDto } from './dto/createProductDto';
 
 export enum productStatus {
   ACTIVE = 'ACTIVE',
@@ -234,15 +236,18 @@ export class ProductsRepository {
   findAll() {
     return products;
   }
+
   findOne(id: number) {
     return products.find((product) => product.id === id);
   }
 
-  create(product: Product) {
-    return `This action adds a new product: ${product.name}`;
+  create(product: CreateProductDto) {
+    return `Este metodo crea un nuevo producto`;
   }
 
-  update(id: string, product: Product) {}
+  update(id: string, product: UpdateProductDto) {
+    return `Este metodo actualiza un producto existente`;
+  }
 
   remove(id: string) {
     const numericId = Number(id);

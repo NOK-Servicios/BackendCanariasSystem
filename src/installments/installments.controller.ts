@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { InstallmentsService } from './installments.service';
 
 @Controller('installments')
@@ -11,27 +11,27 @@ export class InstallmentsController {
   }
 
   @Get(':id')
-  getInstallmentById(id: string) {
+  getInstallmentById(@Param('id') id: string) {
     return this.installmentsService.getInstallmentByIdService(id);
   }
 
-  @Get(':saleId')
-  getinstallmentBySaleId(saleId: string) {
+  @Get('sales/:saleId')
+  getinstallmentBySaleId(@Param('saleId') saleId: string) {
     return this.installmentsService.getinstallmentBySaleIdService(saleId);
   }
 
-  @Get(':clientId')
-  getinstallmentByClientId(clientId: string) {
+  @Get('client/:clientId')
+  getinstallmentByClientId(@Param('clientId') clientId: string) {
     return this.installmentsService.getinstallmentByClientIdService(clientId);
   }
 
   @Post()
-  createInstallment(createInstallment: any) {
+  createInstallment(@Body() createInstallment: any) {
     return this.installmentsService.createInstallmentService(createInstallment);
   }
 
   @Put(':id')
-  updateInstallment(id: string, updateInstallment: any) {
+  updateInstallment(@Param('id') id: string, @Body() updateInstallment: any) {
     return this.installmentsService.updateInstallmentService(
       id,
       updateInstallment,

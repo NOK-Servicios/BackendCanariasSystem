@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Patch } from '@nestjs/common';
 import {
   Body,
   Delete,
@@ -18,17 +18,32 @@ export class SalesController {
 
   @Post()
   create(@Body() sale: CreateSaleDto) {
-    return this.salesService.create(sale);
+    return this.salesService.createService(sale);
   }
 
   @Get()
   findAll() {
-    return this.salesService.salesFindAll();
+    return this.salesService.salesFindAllService();
   }
 
   @Get(':id')
   findOne(@Param('id', new ParseUUIDPipe()) id: string) {
-    return this.salesService.salesFindOne(id);
+    return this.salesService.salesFindOneService(id);
+  }
+
+  @Get('client/:clientId')
+  findByClient(@Param('clientId', new ParseUUIDPipe()) clientId: string) {
+    return this.salesService.salesFindByClientService(clientId);
+  }
+
+  @Get('staff/:staffId')
+  findByStaff(@Param('staffId', new ParseUUIDPipe()) staffId: string) {
+    return this.salesService.salesFindByStaffService(staffId);
+  }
+
+  @Get('date/:from/:to')
+  findByDateRange(@Param('from') from: string, @Param('to') to: string) {
+    return this.salesService.salesFindByDateRangeService(from, to);
   }
 
   @Put(':id')
@@ -36,11 +51,11 @@ export class SalesController {
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() sale: UpdateSaleDto,
   ) {
-    return this.salesService.salesUpdate(id, sale);
+    return this.salesService.salesUpdateService(id, sale);
   }
 
   @Delete(':id')
   remove(@Param('id', new ParseUUIDPipe()) id: string) {
-    return this.salesService.saleDelete(id);
+    return this.salesService.saleDeleteService(id);
   }
 }

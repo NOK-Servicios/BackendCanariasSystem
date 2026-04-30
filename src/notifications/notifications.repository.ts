@@ -1,5 +1,7 @@
+import { Injectable } from '@nestjs/common';
 import { UpdateNotificationDto } from './dto/updateNotificationDto';
 
+@Injectable()
 export class NotificationRepository {
   getAllNotifications() {
     return 'este metodo trae todas las notificaciones';

@@ -2,26 +2,38 @@ import { Injectable } from '@nestjs/common';
 import { CreateSaleDto } from './dto/createSalesDto';
 import { UpdateSaleDto } from './dto/updateSalesDto';
 
+@Injectable()
 export class SalesRepository {
-  constructor(private readonly salesRepository: SalesRepository) {}
 
-  create(sale: CreateSaleDto) {
-    return 'ACA VAMOS A TENER LA LOGICA PARA CREAR UNA VENTA';
+  saleCreate(sale: CreateSaleDto) {
+    return 'este metodo crea una nueva venta';
   }
 
-  findAll() {
-    return 'ACA VAMOS A TENER TODAS LAS VENTAS';
+  saleFindAll() {
+    return 'este metodo devuelve todas las ventas';
   }
 
-  findOne(id: string) {
-    return 'ACA VAMOS A TENER EL DETALLE DE UNA VENTA';
+  saleFindOne(id: string) {
+    return 'este metodo devuelve una venta por su id';
   }
 
-  update(id: string, sale: UpdateSaleDto) {
-    return 'ACA VAMOS A TENER LA LOGICA PARA ACTUALIZAR UNA VENTA';
+  saleUpdate(id: string, sale: UpdateSaleDto) {
+    return 'este metodo actualiza una venta';
   }
 
   saleDelete(id: string) {
-    return 'ACA VAMOS A TENER LA LOGICA PARA ELIMINAR UNA VENTA';
+    return 'este metodo elimina una venta';
+  }
+
+  findByDateRange(from: string, to: string) {
+    return 'este metodo devuelve las ventas entre dos fechas';
+  }
+
+  findByStaff(staffId: string) {
+    return 'este metodo devuelve las ventas realizadas por un vendedor o cobrador';
+  }
+
+  findByClient(clientId: string) {
+    return 'este metodo devuelve las ventas realizadas a un cliente';
   }
 }

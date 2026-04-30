@@ -1,6 +1,6 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CashboxService } from './cashbox.service';
-import { AddCashboxDto} from './dto/updateCashboxDto';
+import { AddCashboxDto } from './dto/updateCashboxDto';
 
 @Controller('cashbox')
 export class CashboxController {
@@ -11,12 +11,12 @@ export class CashboxController {
   }
 
   @Get(':id')
-  oneCashbox(id: string) {
+  oneCashbox(@Param('id') id: string) {
     return this.cashboxService.findOneCashbox(id);
   }
 
   @Post(':id')
-  addCashbox(cashbox: AddCashboxDto) {
+  addCashbox(@Body() cashbox: AddCashboxDto) {
     return this.cashboxService.addCashbox(cashbox);
   }
 }

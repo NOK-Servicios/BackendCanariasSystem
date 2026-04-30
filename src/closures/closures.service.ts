@@ -6,15 +6,19 @@ import { createClouseDto } from './dto/createClouseDto';
 export class ClosuresService {
   constructor(private readonly clousuresRepository: clousuresRepository) {}
 
-  createClosure(closure: createClouseDto) {
+  createClosureService(closure: createClouseDto) {
     return this.clousuresRepository.create(closure);
   }
 
-  getClosures() {
+  getClosuresService() {
     return this.clousuresRepository.findAll();
   }
 
-  getClosureById(id: string) {
+  getClosureByIdService(id: string) {
     return this.clousuresRepository.findById(id);
+  }
+
+  getClosuresByStaffIdService(staffId: string) {
+    return this.clousuresRepository.findByStaffId(staffId);
   }
 }

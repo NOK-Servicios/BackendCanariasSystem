@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CashboxmovementsService } from './cashboxmovements.service';
 import { CreateCashMovementDto } from './dto/createCashMovementDto';
 
@@ -9,7 +9,7 @@ export class CashboxmovementsController {
   ) {}
 
   @Post()
-  create(CreateCashMovement: CreateCashMovementDto) {
+  create(@Body() CreateCashMovement: CreateCashMovementDto) {
     return this.cashboxmovementsService.create(CreateCashMovement);
   }
 
@@ -18,8 +18,8 @@ export class CashboxmovementsController {
     return this.cashboxmovementsService.findAll();
   }
 
-  @Get(':id')
-  findOne(id: string) {
+  @Get()
+  findOne(@Param('id') id: string) {
     return this.cashboxmovementsService.findOne(id);
   }
 }

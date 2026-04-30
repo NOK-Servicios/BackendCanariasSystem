@@ -6,33 +6,35 @@ import { SalesRepository } from './sales.repository';
 @Injectable()
 export class SalesService {
   constructor(private readonly salesRepository: SalesRepository) {}
-  create(sale: CreateSaleDto) {
-    return this.salesRepository.create(sale);
+  createService(sale: CreateSaleDto) {
+    return this.salesRepository.saleCreate(sale);
   }
 
-  salesFindAll() {
-    return this.salesRepository.findAll();
+  salesFindAllService() {
+    return this.salesRepository.saleFindAll();
   }
 
-  salesFindOne(id: string) {
-    return this.salesRepository.findOne(id);
+  salesFindOneService(id: string) {
+    return this.salesRepository.saleFindOne(id);
   }
 
-  salesUpdate(id: string, sale: UpdateSaleDto) {
-    return this.salesRepository.update(id, sale);
+  salesUpdateService(id: string, status: UpdateSaleDto) {
+    return this.salesRepository.saleUpdate(id, status);
   }
 
-  saleDelete(id: string) {
+  saleDeleteService(id: string) {
     return this.salesRepository.saleDelete(id);
   }
+
+  salesFindByDateRangeService(from: string, to: string) {
+    return this.salesRepository.findByDateRange(from, to);
+  }
+
+  salesFindByStaffService(staffId: string) {
+    return this.salesRepository.findByStaff(staffId);
+  }
+
+  salesFindByClientService(clientId: string) {
+    return this.salesRepository.findByClient(clientId);
+  }
 }
-
-// POST /ventas → crear venta (incluye producto, cliente, vendedor, cobrador, cuotas)
-
-// GET /ventas → listar todas
-
-// GET /ventas/:id → detalle de una venta
-
-// PUT /ventas/:id → actualizar datos de la venta
-
-// DELETE /ventas/:id → eliminar

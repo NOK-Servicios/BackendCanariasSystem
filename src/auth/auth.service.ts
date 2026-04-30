@@ -9,18 +9,18 @@ export class AuthService {
   }
 
   findAll() {
-    return `This action returns all auth`;
+    return `Esta accion devuelve todos los auth`;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} auth`;
+    return `Esta accion devuelve un auth `;
   }
 
   update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`;
+    return `Esta accion actualiza un auth `;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} auth`;
+    return `Esta accion elimina un auth `;
   }
 }

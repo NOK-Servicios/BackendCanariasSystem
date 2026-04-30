@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Delete,
   Get,
@@ -26,14 +27,14 @@ export class ClientsController {
   }
 
   @Post()
-  create(client: CreateClientDto) {
+  create(@Body() client: CreateClientDto) {
     return this.clientsService.create(client);
   }
 
   @Put(':id')
   update(
     @Param('id', new ParseUUIDPipe()) id: string,
-    client: UpdateClientDto,
+    @Body() client: UpdateClientDto,
   ) {
     return this.clientsService.update(id, client);
   }

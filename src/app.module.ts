@@ -7,8 +7,6 @@ import { ProductsModule } from './products/products.module';
 import { CashboxModule } from './cashbox/cashbox.module';
 import { SuppliersModule } from './suppliers/suppliers.module';
 import { SalesModule } from './sales/sales.module';
-import { PaymentsController } from './payments/payments.controller';
-import { PaymentsService } from './payments/payments.service';
 import { ReceiptsModule } from './receipts/receipts.module';
 import { StockmovementsModule } from './stockmovements/stockmovements.module';
 import { StockalertsModule } from './stockalerts/stockalerts.module';
@@ -22,6 +20,7 @@ import { CashboxmovementsModule } from './cashboxmovements/cashboxmovements.modu
 import { InstallmentsModule } from './installments/installments.module';
 import { AuthModule } from './auth/auth.module';
 import { LoggerMiddleware } from './middlewares/loger.middleware';
+import { PaymentsModule } from './payments/payments.module';
 
 @Module({
   imports: [
@@ -43,9 +42,10 @@ import { LoggerMiddleware } from './middlewares/loger.middleware';
     CashboxmovementsModule,
     InstallmentsModule,
     AuthModule,
+    PaymentsModule,
   ],
-  controllers: [AppController, PaymentsController],
-  providers: [AppService, PaymentsService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
